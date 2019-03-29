@@ -12,6 +12,7 @@ public class Main {
     static int[][] tab1 = new int[SIZE_Y+2][SIZE_X+2];
     static int[][] tab2 = new int[SIZE_Y+2][SIZE_X+2];
 
+
     public static void main(String[] args) {
         StdDraw.setCanvasSize(600, 600);
         StdDraw.setXscale(0, SIZE_X+2);
