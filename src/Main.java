@@ -9,10 +9,8 @@ public class Main {
     public static final Integer SIZE_X = 10;
     public static final Integer SIZE_Y = 10;
 
-    static int[][] tab1 = new int[SIZE_Y + 2][SIZE_X + 2];
-    static int[][] tab2 = new int[SIZE_Y + 2][SIZE_X + 2];
-    static int[][] tab3;
-
+    static int[][] currentLife = new int[SIZE_Y + 2][SIZE_X + 2];
+    static int[][] nextGeneration = new int[SIZE_Y + 2][SIZE_X + 2];
 
     public static void main(String[] args) {
 
@@ -32,7 +30,7 @@ public class Main {
         for (int y = 1; y < SIZE_Y + 1; y++) {
 
             for (int x = 1; x < SIZE_X + 1; x++) {
-                tab1[y][x] = rnd.nextInt(2);
+                currentLife[y][x] = rnd.nextInt(2);
             }
         }
     }
@@ -40,13 +38,13 @@ public class Main {
     public static void run() {
 
         //вывод в консоль начального массива
-        for (int i = 0; i < tab1.length; i++) {
-            System.out.println(Arrays.toString(tab1[i]));
+        for (int i = 0; i < currentLife.length; i++) {
+            System.out.println(Arrays.toString(currentLife[i]));
         }
 
         while (true) {
-            drawTable(tab1);
-            change(tab1, tab2);
+            drawTable(currentLife);
+            change(currentLife, nextGeneration);
         }
     }
 
@@ -80,7 +78,6 @@ public class Main {
 
     public static void change(int[][] array1, int[][] array2) {
 
-
         for (int y = 1; y < SIZE_Y + 1; y++) {
 
             for (int x = 1; x < SIZE_X + 1; x++) {
@@ -96,8 +93,10 @@ public class Main {
             }
         }
 
-        tab3 = tab1;
-        tab1 = tab2;
-        tab2 = tab3;
+        int[][] tmp;
+
+        tmp = currentLife;
+        currentLife = nextGeneration;
+        nextGeneration = tmp;
     }
 }
