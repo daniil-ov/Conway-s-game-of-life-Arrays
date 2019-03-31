@@ -11,6 +11,8 @@ public class Main {
 
     static int[][] tab1 = new int[SIZE_Y + 2][SIZE_X + 2];
     static int[][] tab2 = new int[SIZE_Y + 2][SIZE_X + 2];
+    static int[][] tab3;
+
 
     public static void main(String[] args) {
 
@@ -78,6 +80,7 @@ public class Main {
 
     public static void change(int[][] array1, int[][] array2) {
 
+
         for (int y = 1; y < SIZE_Y + 1; y++) {
 
             for (int x = 1; x < SIZE_X + 1; x++) {
@@ -93,11 +96,8 @@ public class Main {
             }
         }
 
-        for (int y = 1; y < SIZE_Y + 1; y++) {
-
-            for (int x = 1; x < SIZE_X + 1; x++) {
-                tab1[y][x] = array2[y][x];
-            }
-        }
+        tab3 = tab1;
+        tab1 = tab2;
+        tab2 = tab3;
     }
 }
