@@ -35,7 +35,7 @@ public class Main {
         }
     }
 
-    public  static void run(){
+    public static void run() {
 
         //вывод в консоль начального массива
         for (int i = 0; i < tab1.length; i++) {
@@ -43,22 +43,11 @@ public class Main {
         }
 
         while (true) {
-
-            for (int i = 0; i < 2; i++) {
-                drawTable(getNameTable(i));
-                change(getNameTable(i), getNameTable(i + 1));
-            }
+            drawTable(tab1);
+            change(tab1, tab2);
         }
     }
 
-    public static int[][] getNameTable(int num) {
-
-        if (num % 2 == 0) {
-            return tab1;
-        } else {
-            return tab2;
-        }
-    }
 
     public static void drawTable(int[][] array) {
 
@@ -69,7 +58,7 @@ public class Main {
             for (int x = 1; x < SIZE_X + 1; x++) {
 
                 if (array[y][x] == 1) {
-                    StdDraw.filledSquare(x + 1,SIZE_Y - y + 2, 0.5);
+                    StdDraw.filledSquare(x + 1, SIZE_Y - y + 2, 0.5);
                 }
             }
         }
@@ -96,11 +85,18 @@ public class Main {
 
                 if (((nb == 2) || (nb == 3)) && (array1[y][x] == 1)) {
                     array2[y][x] = 1;
-                } else if (nb == 3){
+                } else if (nb == 3) {
                     array2[y][x] = 1;
                 } else {
                     array2[y][x] = 0;
                 }
+            }
+        }
+
+        for (int y = 1; y < SIZE_Y + 1; y++) {
+
+            for (int x = 1; x < SIZE_X + 1; x++) {
+                tab1[y][x] = array2[y][x];
             }
         }
     }
