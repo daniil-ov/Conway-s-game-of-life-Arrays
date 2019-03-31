@@ -78,6 +78,8 @@ public class Main {
 
     public static void change(int[][] array1, int[][] array2) {
 
+        int[][] tmp;
+
         for (int y = 1; y < SIZE_Y + 1; y++) {
 
             for (int x = 1; x < SIZE_X + 1; x++) {
@@ -92,8 +94,6 @@ public class Main {
                 }
             }
         }
-
-        int[][] tmp;
 
         tmp = currentLife;
         currentLife = nextGeneration;
